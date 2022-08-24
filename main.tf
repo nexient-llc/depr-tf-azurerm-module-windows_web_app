@@ -5,13 +5,13 @@ resource "azurerm_windows_web_app" "main" {
   service_plan_id     = var.service_plan_id
 
   site_config {
-    always_on = var.windows_web_app.always_on
+    always_on = var.windows_web_app_site_config.always_on
   }
 
   lifecycle {
     ignore_changes = [
       tags,
-      site_config
+      site_config["virtual_application"]
     ]
   }
 }
